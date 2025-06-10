@@ -1,8 +1,13 @@
 package Main;
 
+import Modelo.Financiamento;
+import Util.InterfaceUsuario;
 
 public class Main {
     public static void main(String[] args){
+
+    InterfaceUsuario interfaceUsuario = new InterfaceUsuario(); 
+
         double taxaJurosAnual = interfaceUsuario.pedirTaxaJuros();
         int prazoFinanciamentoAnos = interfaceUsuario.pedirPrazoFinanciamento();
         double valorImovel = interfaceUsuario.pedirValorImovel();

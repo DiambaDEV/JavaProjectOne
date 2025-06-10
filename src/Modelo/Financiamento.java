@@ -9,6 +9,21 @@ public class Financiamento {
 
     private double taxaJurosAnual;
 
+    public double getvalorImovel(){
+        return this.valorImovel;
+    }
+
+    public int getprazoFinanciamento(){
+        return this.prazoFinanciamento;
+    }
+
+    public double gettaxaJurusAnual(){
+        return this.taxaJurosAnual;
+    }
+
+
+
+
     //CONSTRUTOR
     public Financiamento(double valorDesejadoImovel, int prazoFinanciamentoAnos, double taxaJurosAnual){
         this.valorImovel = valorDesejadoImovel;
