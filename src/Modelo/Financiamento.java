@@ -3,11 +3,11 @@ package Modelo;
 public class Financiamento {
 
     //ATRIBUTOS
-    private double valorImovel;
+    protected double valorImovel;
 
-    private int prazoFinanciamento;
+    protected int prazoFinanciamento;
 
-    private double taxaJurosAnual;
+    protected double taxaJurosAnual;
 
     public double getvalorImovel(){
         return this.valorImovel;
