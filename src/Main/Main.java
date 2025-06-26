@@ -15,20 +15,44 @@ public class Main {
 
         ArrayList<Financiamento> financiamentos = new ArrayList<>();
 
-        // 1. Um financiamento com dados do usuário
+        // 1. Permitir ao usuário escolher o tipo de financiamento
+        System.out.println("Escolha o tipo de imóvel:");
+        System.out.println("1 - Casa");
+        System.out.println("2 - Apartamento");
+        System.out.println("3 - Terreno");
+        int tipo = interfaceUsuario.pedirOpcao(1, 3);
+
         double taxaJurosAnual = interfaceUsuario.pedirTaxaJuros();
         int prazoFinanciamentoAnos = interfaceUsuario.pedirPrazoFinanciamento();
         double valorImovel = interfaceUsuario.pedirValorImovel();
 
-        Financiamento financiamentoUsuario = new Casa(valorImovel, prazoFinanciamentoAnos, taxaJurosAnual);
+        Financiamento financiamentoUsuario = null;
+
+        switch (tipo) {
+            case 1:
+                double areaConstruida = interfaceUsuario.pedirAreaConstruida();
+                double areaTerreno = interfaceUsuario.pedirAreaTerreno();
+                financiamentoUsuario = new Casa(valorImovel, prazoFinanciamentoAnos, taxaJurosAnual, areaConstruida, areaTerreno);
+                break;
+            case 2:
+                int vagas = interfaceUsuario.pedirVagasGaragem();
+                int andar = interfaceUsuario.pedirNumeroAndar();
+                financiamentoUsuario = new Apartamento(valorImovel, prazoFinanciamentoAnos, taxaJurosAnual, vagas, andar);
+                break;
+            case 3:
+                String zona = interfaceUsuario.pedirZona();
+                financiamentoUsuario = new Terreno(valorImovel, prazoFinanciamentoAnos, taxaJurosAnual, zona);
+                break;
+        }
+
         financiamentos.add(financiamentoUsuario);
 
-        // 2. Financiamentos com dados fixos
-        Financiamento casa1 = new Casa(200000, 15, 0.09);
-        Financiamento casa2 = new Casa(250000, 20, 0.085);
-        Financiamento apto1 = new Apartamento(300000, 30, 0.10);
-        Financiamento apto2 = new Apartamento(180000, 10, 0.11);
-        Financiamento terreno1 = new Terreno(120000, 8, 0.12);
+        // 2. Financiamentos com dados fixos (exemplo de teste)
+        Financiamento casa1 = new Casa(200000, 15, 0.09, 120, 200);
+        Financiamento casa2 = new Casa(250000, 20, 0.085, 150, 250);
+        Financiamento apto1 = new Apartamento(300000, 30, 0.10, 2, 5);
+        Financiamento apto2 = new Apartamento(180000, 10, 0.11, 1, 2);
+        Financiamento terreno1 = new Terreno(120000, 8, 0.12, "Residencial");
 
         financiamentos.add(casa1);
         financiamentos.add(casa2);
