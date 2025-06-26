@@ -2,40 +2,32 @@ package Modelo;
 
 public abstract class Financiamento {
 
-    //ATRIBUTOS
     protected double valorImovel;
-
     protected int prazoFinanciamento;
-
     protected double taxaJurosAnual;
 
-    public double getvalorImovel(){
+    // ✅ Todos os métodos devem ser public
+    public double getvalorImovel() {
         return valorImovel;
     }
 
-    public int getprazoFinanciamento(){
+    public int getprazoFinanciamento() {
         return prazoFinanciamento;
     }
 
-    public double gettaxaJurosAnual(){
+    public double gettaxaJurosAnual() {
         return taxaJurosAnual;
     }
 
-    private double areaConstruida;
-
-    private double areaTerreno;
-
-    //CONSTRUTOR
-    public Financiamento(double valorDesejadoImovel, int prazoFinanciamento, double taxaJurosAnual, double areaConstruida, double areaTerreno){
-        
+    public Financiamento(double valorDesejadoImovel, int prazoFinanciamentoAnos, double taxaJurosAnual){
+        this.valorImovel = valorDesejadoImovel;
+        this.prazoFinanciamento = prazoFinanciamentoAnos;
+        this.taxaJurosAnual = taxaJurosAnual;
     }
 
-    //MÉTODOS
-    public  double calcularPagamentoMensal(){
-        return ( this.valorImovel/ (this.prazoFinanciamento * 12)) * (1 + (this.taxaJurosAnual / 12));
-    }
+    public abstract double calcularPagamentoMensal();
 
-    public  double calcularTotalPagamento(){
+    public double calcularTotalPagamento(){
         return this.calcularPagamentoMensal() * this.prazoFinanciamento * 12;
     }
 }

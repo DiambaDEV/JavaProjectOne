@@ -15,7 +15,7 @@ public class Casa extends Financiamento{
 
     //Override
     public double calcularPagamentoMensal(){
-        return super.calcularPagamentoMensal() + 80;
+        return calcularPagamentoMensal() + 80;
     }
 
     public double getAreaConstuida(){
