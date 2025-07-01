@@ -1,9 +1,13 @@
 package Main;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 
 import Modelo.Financiamento;
 import Modelo.Casa;
 import Modelo.Apartamento;
 import Modelo.Terreno;
+import Util.Arquivos;
 import Util.InterfaceUsuario;
 
 import java.util.ArrayList;
@@ -11,11 +15,14 @@ import java.util.ArrayList;
 
 
 public class Main {
+
+    
     public static void main(String[] args) {
 
         InterfaceUsuario interfaceUsuario = new InterfaceUsuario();
 
         ArrayList<Financiamento> financiamentos = new ArrayList<>();
+            
 
         // 1. Permitir ao usuário escolher o tipo de financiamento
         System.out.println("Escolha o tipo de imóvel:");
@@ -82,5 +89,14 @@ public class Main {
         System.out.println("===================================");
         System.out.printf("Soma dos valores dos imóveis: R$ %.2f%n", somaValorImoveis);
         System.out.printf("Soma dos valores dos financiamentos: R$ %.2f%n", somaTotalPagamento);
+
+        // Salvar em arquivo de texto
+        Arquivos.salvarFinanciamentosTxt(financiamentos, "financiamentos.txt");
+        // Ler e exibir
+        Arquivos.lerFinanciamentosTxt("financiamentos.txt");
+
+
+
     }
+
 }

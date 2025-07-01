@@ -23,4 +23,14 @@ public class Terreno extends Financiamento {
     public String getZonaTerreno() {
         return zonaTerreno;
     }
+
+    public String toString( ){
+
+        StringBuilder sb = new StringBuilder();
+        sb.append(this.getvalorImovel()).append("\n");
+        sb.append(this.calcularTotalPagamento()).append("\n");
+        
+        return sb.toString();
+
+    }
 }
